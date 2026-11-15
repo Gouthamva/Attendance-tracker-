@@ -372,8 +372,8 @@ create trigger lock_attendance before update or delete
   $('today-badge').textContent = new Date().toLocaleDateString(undefined,{weekday:'long',month:'short',day:'numeric',year:'numeric'});
   // For GitHub Pages, set these two PUBLIC values in this file before publishing.
   // Never put a service-role key here. Configure narrowly scoped Supabase RLS first.
-  const GITHUB_SUPABASE_URL='';
-  const GITHUB_SUPABASE_ANON_KEY='';
+  const GITHUB_SUPABASE_URL='https://cezhxtxxulytmtlvzvoi.supabase.co';
+  const GITHUB_SUPABASE_ANON_KEY='sb_publishable_iFsBOSnV7z2eEiiDBwMq4A_5L0SIlwM';
   const standalone=!window.dataSdk;
   let records=[], ready=false, cloud=standalone&&GITHUB_SUPABASE_URL&&GITHUB_SUPABASE_ANON_KEY?{url:GITHUB_SUPABASE_URL.replace(/\/+$/,''),key:GITHUB_SUPABASE_ANON_KEY}:null, installPrompt=null, busy=false;
   async function cloudRequest(path,options={}){if(!cloud)throw Error('Configure Supabase in Cloud setup first.');const response=await fetch(cloud.url+'/rest/v1/class_attendance'+path,{...options,headers:{apikey:cloud.key,Authorization:'Bearer '+cloud.key,'Content-Type':'application/json',...(options.headers||{})}});if(!response.ok)throw Error('Supabase HTTP '+response.status+': '+(await response.text()).slice(0,140));return response.status===204?null:response.json()}
